@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isiahs Message Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .message-board {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .message:last-child {
+            border-bottom: none;
+        }
+        .author {
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .content {
+            margin-top: 5px;
+        }
+        .message-form {
+            margin-top: 20px;
+        }
+        .message-form input,
+        .message-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .message-form button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .message-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Interactive Message Board</h1>
+    </div>
+    <div class="container">
+        <div class="message-board" id="messageBoard">
+            <h2>Messages</h2>
+            <!-- Messages will appear here -->
+        </div>
+        <div class="message-form">
+            <h2>Post a Message</h2>
+            <form id="messageForm">
+                <input type="text" id="author" placeholder="Your Name" required>
+                <textarea id="content" placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Select form and message board elements
+        const messageForm = document.getElementById('messageForm');
+        const messageBoard = document.getElementById('messageBoard');
+
+        // Function to add a new message
+        function addMessage(author, content) {
+            // Create a new message container
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+
+            // Create author element
+            const authorDiv = document.createElement('div');
+            authorDiv.classList.add('author');
+            authorDiv.textContent = author;
+
+            // Create content element
+            const contentDiv = document.createElement('div');
+            contentDiv.classList.add('content');
+            contentDiv.textContent = content;
+
+            // Append elements to the message container
+            messageDiv.appendChild(authorDiv);
+            messageDiv.appendChild(contentDiv);
+
+            // Append the message container to the message board
+            messageBoard.appendChild(messageDiv);
+        }
+
+        // Handle form submission
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent page reload
+
+            // Get form values
+            const author = document.getElementById('author').value;
+            const content = document.getElementById('content').value;
+
+            // Add the new message
+            addMessage(author, content);
+
+            // Clear the form
+            messageForm.reset();
+        });
+    </script>
+</body>
+</html>
