@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Message Board</title>
     <style>
+        /* General Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -12,6 +13,8 @@
             background: linear-gradient(120deg, #89f7fe, #66a6ff);
             color: #333;
         }
+
+        /* Header */
         .header {
             background: #003366;
             color: #fff;
@@ -19,12 +22,15 @@
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .header h1 {
             margin: 0;
             font-size: 2.5rem;
             font-weight: bold;
             letter-spacing: 1px;
         }
+
+        /* Container */
         .container {
             padding: 20px;
             max-width: 800px;
@@ -33,42 +39,54 @@
             border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
+
+        /* Message Board */
         .message-board {
             margin-top: 20px;
         }
+
         .message-board h2 {
             margin-bottom: 10px;
             font-size: 1.8rem;
             color: #003366;
         }
+
         .message {
             border-bottom: 1px solid #f0f0f0;
             padding: 10px 0;
             transition: background 0.3s;
         }
+
         .message:hover {
             background: #f9f9f9;
         }
+
         .author {
             font-weight: bold;
             color: #003366;
             font-size: 1.1rem;
         }
+
         .content {
             margin-top: 5px;
             font-size: 1rem;
             color: #555;
         }
+
         .message:last-child {
             border-bottom: none;
         }
+
+        /* Message Form */
         .message-form {
             margin-top: 30px;
         }
+
         .message-form h2 {
             font-size: 1.8rem;
             color: #003366;
         }
+
         .message-form input,
         .message-form textarea {
             width: 100%;
@@ -80,11 +98,13 @@
             box-sizing: border-box;
             transition: border-color 0.3s;
         }
+
         .message-form input:focus,
         .message-form textarea:focus {
             border-color: #007BFF;
             outline: none;
         }
+
         .message-form button {
             display: inline-block;
             padding: 12px 20px;
@@ -99,23 +119,27 @@
             cursor: pointer;
             transition: background 0.3s;
         }
+
         .message-form button:hover {
             background: #00509e;
         }
     </style>
 </head>
 <body>
+    <!-- Header Section -->
     <div class="header">
         <h1>Interactive Message Board</h1>
     </div>
+
+    <!-- Main Content -->
     <div class="container">
-        <!-- Message Board -->
+        <!-- Message Board Section -->
         <div class="message-board" id="messageBoard">
             <h2>Messages</h2>
-            <!-- Messages will dynamically appear here -->
+            <!-- Messages will be dynamically added here -->
         </div>
 
-        <!-- Message Form -->
+        <!-- Message Form Section -->
         <div class="message-form">
             <h2>Post a Message</h2>
             <form id="messageForm">
@@ -127,13 +151,13 @@
     </div>
 
     <script>
-        // Select form and message board elements
+        // DOM Elements
         const messageForm = document.getElementById('messageForm');
         const messageBoard = document.getElementById('messageBoard');
 
-        // Function to add a new message
+        // Add a New Message
         function addMessage(author, content) {
-            // Create a new message container
+            // Create the message container
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('message');
 
@@ -147,17 +171,17 @@
             contentDiv.classList.add('content');
             contentDiv.textContent = content;
 
-            // Append author and content to the message container
+            // Append elements to the message container
             messageDiv.appendChild(authorDiv);
             messageDiv.appendChild(contentDiv);
 
-            // Append the message container to the message board
+            // Add message to the message board
             messageBoard.appendChild(messageDiv);
         }
 
-        // Event listener for form submission
+        // Handle Form Submission
         messageForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent the page from reloading
+            event.preventDefault(); // Prevent page reload
 
             // Get form values
             const author = document.getElementById('author').value;
@@ -172,4 +196,6 @@
     </script>
 </body>
 </html>
+
+
 
